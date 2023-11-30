@@ -2,10 +2,16 @@
 #define _BINARY_TREES_H_
 
 
-#include <studio.h>
+#include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <math.h>
+#include <string.h>
+#include <math.h>
+#include <limits.h>
+
+
 /**
  * struct binary_tree_s - Binary tree node
  *
@@ -26,10 +32,14 @@ typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
+
+/*print binary tree*/
 void binary_tree_print(const binary_tree_t *);
+
+binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
+
 void binary_tree_delete(binary_tree_t *tree);
 int binary_tree_is_leaf(const binary_tree_t *node);
 int binary_tree_is_root(const binary_tree_t *node);
@@ -67,5 +77,18 @@ heap_t *heap_insert(heap_t **root, int value);
 heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
+
+/* helper functions */
+int _pow_recursion(int x, int y);
+binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
+			  const binary_tree_t *second);
+void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
+int btic_helper(const binary_tree_t *tree, size_t index, size_t size);
+int btib_helper(const binary_tree_t *tree, int low, int hi);
+bst_t *bst_min_val(bst_t *root);
+int btia_helper(const binary_tree_t *tree, int low, int hi);
+int btih_helper(const binary_tree_t *tree);
+void sata_helper(avl_t **root, int *array, size_t lo, size_t hi);
+
 
 #endif
